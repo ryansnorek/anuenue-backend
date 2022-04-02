@@ -41,6 +41,24 @@ const storeItems = [
     quantity: 0,
     price: 1000,
   },
+  {
+    name: "Hat",
+    id: 428,
+    quantity: 0,
+    price: 24000,
+  },
+{
+    name: "Comfy Swetter",
+    id: 429,
+    quantity: 0,
+    price: 30000,
+  },
+{
+    name: "Ellegant Jammies",
+    id: 430,
+    quantity: 0,
+    price: 60000,
+  },
 ];
 
 module.exports = storeItems;
