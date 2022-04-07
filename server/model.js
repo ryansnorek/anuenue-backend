@@ -1,5 +1,19 @@
 const storeItems = require("./storeItems");
 
+const db = require("./data/db-config");
+
+function getAllItems() {
+  return db("store_items");
+}
+
+function getItemByID(id) {
+  return db("store_items").where("item_id", id);
+}
+
+function updateItem(id, item) {
+  return db("store_items").where("item_id", id).update(item);
+}
+
 function getItemById(id) {
   return storeItems.find((item) => item.id === id);
 }
@@ -9,8 +23,8 @@ function getLineItems(order) {
     const product = getItemById(item.id);
     const lineItem = {
       price: product.price,
-      quantity: item.qty
-    }
+      quantity: item.qty,
+    };
     return lineItem;
   });
 }
@@ -22,6 +36,10 @@ function getOrderTotal(orderItems) {
 }
 
 module.exports = {
+  getAllItems,
+  getItemByID,
+  updateItem,
+  
   getItemById,
   getLineItems,
   getOrderTotal,
