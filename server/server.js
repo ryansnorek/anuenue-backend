@@ -6,7 +6,9 @@ app.use(express.static("public"));
 const port = process.env.PORT || 8000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
-const stripeRouter = require("./routes");
+
+const stripeRouter = require("./routes/stripe-router");
+const storeRouter = require("./routes/store-router");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -15,6 +17,7 @@ app.use(
 );
 
 app.use("/stripe", stripeRouter);
+app.use("/store", storeRouter);
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
