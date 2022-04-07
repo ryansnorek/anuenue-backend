@@ -6,12 +6,14 @@ app.use(express.static("public"));
 const port = process.env.PORT || 8000;
 const cors = require("cors");
 const bodyParser = require("body-parser");
+const fileUpload = require("express-fileupload");
 
 const stripeRouter = require("./routes/stripe-router");
 const storeRouter = require("./routes/store-router");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(fileUpload());
 app.use(
   cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"] })
 );
