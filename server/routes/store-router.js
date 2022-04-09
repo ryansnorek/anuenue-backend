@@ -1,5 +1,4 @@
 const router = require("express").Router();
-const cors = require("cors");
 const { upload } = require("../middleware");
 const {
   getAllItems,
@@ -44,6 +43,16 @@ router.post("/single/:id", upload.single("image"), async (req, res) => {
     res.json(updatedItem);
   } catch (err) {
     console.log(err);
+    res.json(err);
+  }
+});
+
+router.post("/admin", (req, res) => {
+  const { pass } = req.body;
+  try {
+    const passcode = process.env.PASSCODE;
+    res.json(passcode === pass);
+  } catch (err) {
     res.json(err);
   }
 });
