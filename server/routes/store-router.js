@@ -1,5 +1,12 @@
 const router = require("express").Router();
-const { getAllItems, getItemByID, updateItem } = require("../model");
+const cors = require("cors");
+const { upload } = require("../middleware");
+const {
+  getAllItems,
+  getItemByID,
+  updateItem,
+  updateImage,
+} = require("../model");
 
 router.get("/", async (req, res) => {
   try {
@@ -21,10 +28,22 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", async (req, res) => {
   try {
-    const { id } = req.params; 
+    const { id } = req.params;
     const updatedItem = await updateItem(id, req.body);
     res.json(updatedItem);
   } catch (err) {
+    res.json(err);
+  }
+});
+
+router.post("/single/:id", upload.single("image"), async (req, res) => {
+  try {
+    const { id } = req.params;
+    const image = { pic: req.file.filename };
+    const updatedItem = await updateImage(id, image);
+    res.json(updatedItem);
+  } catch (err) {
+    console.log(err);
     res.json(err);
   }
 });

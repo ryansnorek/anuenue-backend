@@ -1,21 +1,23 @@
 require("dotenv").config();
+const port = process.env.PORT || 8000;
 const express = require("express");
 const app = express();
 app.use(express.static("public"));
+app.use(express.static("images"));
 
-const port = process.env.PORT || 8000;
 const cors = require("cors");
+const helmet = require("helmet");
 const bodyParser = require("body-parser");
-const fileUpload = require("express-fileupload");
 
 const stripeRouter = require("./routes/stripe-router");
 const storeRouter = require("./routes/store-router");
 
+app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(fileUpload());
+app.use(cors())
 app.use(
-  cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"] })
+  cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"]})
 );
 
 app.use("/stripe", stripeRouter);

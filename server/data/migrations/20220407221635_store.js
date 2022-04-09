@@ -7,6 +7,7 @@ exports.up = async function (knex) {
     table.increments("item_id");
     table.text("name", 100).notNullable();
     table.text("image", 500);
+    table.binary("pic", 1000)
     table.integer("price");
     table.text("description", 500);
     table.boolean("food").defaultTo(false);

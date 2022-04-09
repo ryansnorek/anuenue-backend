@@ -16,7 +16,7 @@ exports.seed = async function (knex) {
     },
     {
       name: "Based Brownies",
-      image: "https://glutenfreeonashoestring.com/wp-content/uploads/2017/09/Fudgy-Gluten-Free-Brownies-stack.jpg",
+      image: "../../images/rainbow.png",
       description:
         "Almond butter based brownies to nourish your body and superiority. Paleo and gluten free.",
       price: 4,

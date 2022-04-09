@@ -14,6 +14,10 @@ function updateItem(id, item) {
   return db("store_items").where("item_id", id).update(item);
 }
 
+function updateImage(id, img) {
+  return db("store_items").where("item_id", id).update(img);
+}
+
 function getItemById(id) {
   return storeItems.find((item) => item.id === id);
 }
@@ -39,6 +43,7 @@ module.exports = {
   getAllItems,
   getItemByID,
   updateItem,
+  updateImage,
   
   getItemById,
   getLineItems,
