@@ -2,13 +2,6 @@ require("dotenv").config();
 const port = process.env.PORT || 8000;
 const express = require("express");
 const app = express();
-header("Access-Control-Allow-Origin: *");
-header('Access-Control-Allow-Origin: *');
-header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
-header('Access-Control-Allow-Headers: *');
-header('Access-Control-Max-Age: 1728000');
-header("Content-Length: 0");
-header("Content-Type: text/plain"); 
 
 // app.use((req, res, next) => {
 //   res.header("Access-Control-Allow-Origin", "https://anuenue.netlify.app");
@@ -37,9 +30,9 @@ const storeRouter = require("./routes/store-router");
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(
-//   cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"] })
-// );
+app.use(
+  cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"] })
+);
 
 app.use("/stripe", stripeRouter);
 app.use("/store", storeRouter);
