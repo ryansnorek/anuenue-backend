@@ -29,10 +29,9 @@ const storeRouter = require("./routes/store-router");
 app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-// app.use(cors())
-// app.use(
-//   cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"]})
-// );
+app.use(
+  cors({ origin: "https://anuenue.netlify.app"})
+);
 
 
 
