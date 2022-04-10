@@ -48,13 +48,6 @@ router.post("/single/:id", upload.single("image"), async (req, res) => {
 });
 
 router.post("/admin", (req, res) => {
-  res.header("Access-Control-Allow-Origin", "https://anuenue.netlify.app");
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  res.header("Access-Control-Allow-Methods", "GET, POST, PUT, OPTIONS");
   const { pass } = req.body;
   try {
     const passcode = process.env.PASSCODE;
