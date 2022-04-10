@@ -33,7 +33,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(
 //   cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"]})
 // );
-app.use(cors({ origin: '*'}));
+
 
 
 app.use("/stripe", stripeRouter);
