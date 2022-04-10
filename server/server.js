@@ -5,6 +5,15 @@ const app = express();
 app.use(express.static("public"));
 app.use(express.static("images"));
 
+// const cors = require("cors");
+const helmet = require("helmet");
+const bodyParser = require("body-parser");
+
+const stripeRouter = require("./routes/stripe-router");
+const storeRouter = require("./routes/store-router");
+
+app.use(helmet());
+
 app.use((req, res, next) => {
   res.header("Access-Control-Allow-Origin", "https://anuenue.netlify.app");
   res.header("Access-Control-Allow-Credentials", true);
@@ -19,15 +28,6 @@ app.use((req, res, next) => {
     next();
   }
 });
-
-// const cors = require("cors");
-// const helmet = require("helmet");
-const bodyParser = require("body-parser");
-
-const stripeRouter = require("./routes/stripe-router");
-const storeRouter = require("./routes/store-router");
-
-// app.use(helmet());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 // app.use(cors())
