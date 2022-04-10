@@ -32,7 +32,6 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(
   cors({ origin: "https://anuenue.netlify.app/"})
 );
-// app.use(cors());
 app.use("/stripe", stripeRouter);
 app.use("/store", storeRouter);
 
