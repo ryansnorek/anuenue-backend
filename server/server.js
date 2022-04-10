@@ -21,21 +21,21 @@ app.use(express.static("public"));
 app.use(express.static("images"));
 
 const cors = require("cors");
-const helmet = require("helmet");
+// const helmet = require("helmet");
 const bodyParser = require("body-parser");
 
 const stripeRouter = require("./routes/stripe-router");
 const storeRouter = require("./routes/store-router");
 
-app.use(helmet());
+// app.use(helmet());
 app.use(
-  cors({ origin: ["https://anuenue.netlify.app/", "http://localhost:3000/", "https://anuenue.netlify.app"]})
+  cors({ origin: ["http://localhost:3000", "https://anuenue.netlify.app"] })
 );
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.use("/stripe", stripeRouter);
-app.use("/store", storeRouter);
+// app.use("/store", storeRouter);
 
 app.use((err, req, res, next) => {
   res.status(err.status || 500).json({
