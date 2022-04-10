@@ -51,6 +51,7 @@ router.post("/admin", (req, res) => {
   const { pass } = req.body;
   try {
     const passcode = process.env.PASSCODE;
+    console.log(passcode, pass)
     res.json(passcode === pass);
   } catch (err) {
     res.json(err);
