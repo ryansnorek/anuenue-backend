@@ -47,7 +47,7 @@ router.post("/single/:id", upload.single("image"), async (req, res) => {
   }
 });
 
-router.post("/admin", (req, res) => {
+router.post("/pepe", (req, res) => {
   res.json(true)
   // const { pass } = req.body;
   // try {
