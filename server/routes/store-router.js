@@ -47,15 +47,14 @@ router.post("/single/:id", upload.single("image"), async (req, res) => {
   }
 });
 
-router.get("/admin", (req, res) => {
-  res.json(true)
-  // const { pass } = req.body;
-  // try {
-  //   const passcode = process.env.PASSCODE;
-  //   res.json(passcode === pass);
-  // } catch (err) {
-  //   res.json(err);
-  // }
+router.post("/admin", (req, res) => {
+  const { pass } = req.body;
+  try {
+    const passcode = process.env.PASSCODE;
+    res.json(passcode === pass);
+  } catch (err) {
+    res.json(err);
+  }
 });
 
 module.exports = router;
